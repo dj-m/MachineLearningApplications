@@ -9,7 +9,7 @@
 
 ## Machine Learning Model Evaluation Metrics ## 
 
-Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys)
+Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys) of Maria Khalusova
 
 **Evaluation Metrics**
 
@@ -189,12 +189,12 @@ You can get the Precision, Recall & F1 Scores by calculateing them per label and
 | Precision, Recall & F1 Score with Multi-class Problems<br> |
 | :-: |
 | ![x](images/prec_recall_f1_multi.png) |
-| <br>Next create a confusion matrix for each class/label<br> |
+| <br>Next create a confusion matrix for each class/label<br><br> |
 | ![x](images/prec_recall_f1_to_conf.png) |
-| <br>Then convert this to a Tp / FP table<br> |
+| <br>Then convert this to a Tp / FP table<br><br> |
 | ![x](images/confmatrix_to_tpfp.png) |
 | Here, rows = TP & columns = FP |
-| <br>The number of samples are added to create the micro/macro/weighted averages<br> |
+| <br>The number of samples are added to create the micro/macro/weighted averages<br><br> |
 | ![x](images/tpfp_to_means.png) |
 
 - Micro-averaged: all samples equally contribute to the average
@@ -220,4 +220,81 @@ Considered easier to conceptualize because you're not dealing with probabilities
 How do you evaluate a model based on all those residuals?
 
 - scikit-learn offers a default evaluation metric for regressions: R<sup>2</sup> (or coefficient of determination)
+  - R<sup>2</sup> indicates how well model predictions approximate true values.
+    - 1 = perfect fit, 0 = DummyRegressor predicting average
 
+| R Squared in scikit-learn |
+| :-: |
+| ![scikit-learn r squared](images/reg_scikit.png) |
+| Regression (R<sup>2</sup>) Formula |
+| ![Regression Formula](images/reg_formula.png) |
+| Numerator is sum of squared residuals (the difference between the actual and predicted value).<br><br> Denominator is the squared distance from the actual values and the mean. |
+
+  - If you have a model that predicts the mean, the top/bottom parts re going to be the same, so 1 - 1 = 0.
+  - If your model is doing slightly better that predicting the average then you're gonna have the shorter distance between the actual values and prediction values comapred to the distance between the actual values and the mean... the whole matter will be somewhat closer to 1.
+    - Seeing negative values means something has gone wrong with the model... usually.
+
+- R<sup>2</sup> has an intuituve scale that doesn't depend on your target units.
+  - Between 0 & 1 (or 100%)
+- However, it doesn't give you any information the prediction error or how far your predictions are from the actuals.
+
+**Mean Absolute Error (MAE), Mean Squared Error (MSE) & Root Mean Square Error (RMSE)**
+
+This gives you the error, or how far away your predictions are from actual values.
+
+| MAE is the average of the absolute residual values. |
+| :-: |
+| ![MAE](images/mae.png) |
+| MSE is the average of the squared residual values.|
+| ![MSE](images/mse.png) |
+| The downside of MSE is that the metric is no longer in the units of the target values (instead it's now in the squared units of the target values). |
+| <br>RMSE is more commonly used to return to units of the target values or the root of MSE. <br><br> |
+| ![rmse](images/rmse.png ) |
+
+What do MAE & RMSE have in common?
+
+- Range: 0 to infinity
+- MAE & RMSE have the same units as y values
+  - You can see the error your model is making in the units of the target values
+- Indifferent to the direction of errors
+  - The values of the residuals are squared or have the absolute value
+- The lower the metric's value, the better
+
+Where do MAE & RMSE differ?
+
+- RMSE gives a relatively high weight to large errors
+  - The residuals are squared before they contribute to the average
+- MAE is more robust to outliers
+  - This is because the residuals aren't squared
+- RMSE is differentiable
+  - Often this makes it used more as a loss function, but for an evaluation metric it doesn't matter too much
+
+Neither MAE nor RMSE are robust on a small test set (<100 examples)
+
+For most cases, RMSE does well, but if you really want to dampen the outliers you can use MAE as a second metric.
+
+**Root Mean Squared Logarithmic Error**
+
+A version of RMSE that uses a logarithm of y.
+  
+| ![RMSLE](images/rmsle.png) |
+| :-: |
+
+- The good thing is that this metric shows relative error which is important where your targets have an exponential growth.
+  - Ex: predicting prices and they have a wide range... $5 error on $50 range vs $5 error on $50,000 range... it helps you level these things.
+
+### Conclusion ###
+
+- There's no 'one size fits all' evaluation metric
+- Get to know your data
+  - How many outliers do you have?
+  - Is there a class imbalance or not?
+- Keep in mind the business objective of your ML problem
+  - Understand what your model should care more about
+  
+**Resources**
+
+- [Fast.ai Wiki](https://wiki.fast.ai/)
+- [Root mean square error (RMSE) or mean absolute error (MAE)?](https://gmd.copernicus.org/articles/7/1247/2014/gmd-7-1247-2014.pdf) by T. Chai, R.R. Draxler
+- [Tip 8](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-017-0155-3#Sec9) from [Ten quick tips for machine learning in computational biology](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-017-0155-3#Abs1)
+- [Macro and micro-averaged evaluation measures](https://www.semanticscholar.org/paper/Macro-and-micro-averaged-evaluation-measures-%5B-%5B-%5D-Asch/1d106a2730801b6210a67f7622e4d192bb309303?p2df) by V.V. Asch
