@@ -34,4 +34,14 @@ It's not the same as loss function: It can be, but it doesn't have to be.
 | :-: |
 | ![Supervised Learning Metrics Slide](images/supv_learning_metrics.png) |
 
-- 
+**Classification Metrics**
+
+Binary Classification
+
+- Accuracy = Number of correct predictions / Total number of predictions
+  - Ranges from 0 to 100% (or 0 to 1)
+  
+| Accuracy in scikit-learn is accessed via score() method |
+| :-: |
+| ![Accuracy in scikit-learn](images/scikit-learn_accuracy.png) |
+
