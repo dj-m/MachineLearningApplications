@@ -219,5 +219,5 @@ Considered easier to conceptualize because you're not dealing with probabilities
 
 How do you evaluate a model based on all those residuals?
 
-- scikit-learn offers a default evaluation metric for regressions: R^2 (or coefficient of determination)
+- scikit-learn offers a default evaluation metric for regressions: R<sup>2</sup> (or coefficient of determination)
 
