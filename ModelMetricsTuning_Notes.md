@@ -9,7 +9,7 @@
 
 ## Machine Learning Model Evaluation Metrics ## 
 
-Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys) of Maria Khalusova
+Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys) of [Maria Khalusova](https://twitter.com/mariakhalusova)
 
 **Evaluation Metrics**
 
@@ -294,7 +294,7 @@ A version of RMSE that uses a logarithm of y.
   
 **Resources**
 
-- [Fast.ai Wiki](https://wiki.fast.ai/)
+- Fast.ai [Documentation](https://docs.fast.ai)
 - [Root mean square error (RMSE) or mean absolute error (MAE)?](https://gmd.copernicus.org/articles/7/1247/2014/gmd-7-1247-2014.pdf) by T. Chai, R.R. Draxler
 - [Tip 8](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-017-0155-3#Sec9) from [Ten quick tips for machine learning in computational biology](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-017-0155-3#Abs1)
-- [Macro and micro-averaged evaluation measures](https://www.semanticscholar.org/paper/Macro-and-micro-averaged-evaluation-measures-%5B-%5B-%5D-Asch/1d106a2730801b6210a67f7622e4d192bb309303?p2df) by V.V. Asch
+- [Macro- and micro-averaged evaluation measures](https://www.semanticscholar.org/paper/Macro-and-micro-averaged-evaluation-measures-%5B-%5B-%5D-Asch/1d106a2730801b6210a67f7622e4d192bb309303?p2df) by V.V. Asch
