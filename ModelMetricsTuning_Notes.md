@@ -55,3 +55,65 @@ It's not the same as loss function: It can be, but it doesn't have to be.
 
 - From just the accuracy score we can't know what errors the model is doing nor how to improve it.
 
+**Confusion Matrix**
+
+A table (matrix) that gives you numbers of how many samples your model classified correctly for what they are and how it mistook for something else.
+
+- Technically not a metric, more of a diagnostic tool.
+- It helps to gain insight into the type of errors a model is making.
+- It also helps to understand other metrics that're derived from it.
+
+| Confusino Matrix in scikit-learn: frst, pass actual values then predictions |
+| :-: |
+| ![Confusion Matrix in scikit-learn](images/confmatrix.png) |
+| Confusion Matrix table: rows = actual values, columns = predicted values |
+| ![Confusion Matrix table](images/confmatrix_table.png) |
+| True Negative [Upper Left] values were predicted negative and they were negative.<br><br> True Positive [Lower Right] were predicted positive and they actually were positive. |
+| ![Confusion Matrix table highlighted](images/confmatrix_diag.png) | 
+
+Another benefit of a confusion matrix is what other metrics can be derived from it:
+
+- Precision = True Positives (TP) / TP + False Positives (FP)
+  - If you wanted to improve this you'd get closer to 1 (or 100%).
+- Recall = TP / TP + False Negatives (FN)
+  - If you wanted to improve this, look to having as little false negatives as possible.
+- F1 score = 2 * Precision * Recall / Precision + Recall = 2 * TP / 2 * TP + FP + FN
+  - This is a harmonic mean of Precision & Recall
+
+Depending on the business problem, what do you care about?
+
+- Minimizing False Positives -> **Precision**
+- Minimizing False Negatives -> **Recall**
+
+| Precision, Recall & F1 in scikit-learn |
+| :-: |
+| ![Precision Recall F1 in scikit-learn](images/prec_recall_f1.png) |
+| To optimize for recall, use GridSearchCV with scoring argument = recall |
+| ![GridSearchCV for recall](images/gridsearch_recall.png) |
+
+Another approach is to use all four matrix categories:
+
+| Matthews Correlation Coefficient (MCC)|
+| :-: |
+| ![MCC](images/mcc.png) | 
+
+This is important because so far, this would be the first time that scikit-learn would raise a red flag for unbalanced data:
+
+| Dividing by Zero raises flags of unbalanced data |
+| :-: |
+| ![MCC raises flags](images/mcc_undefined.png) |
+
+F1 score is very sensitive to what you call a positive class while MCC is not. 
+
+In this example, the data is the same but flipped between the two confusion matrix tables.
+
+| F1 Score changes while MCC does not |
+| :-: |
+| ![F1 Score sensitivity](images/f1_mcc.png) |
+
+If you want to summarize a confusion matrix, in one number for a binary problem, MCC gives you a better feeling of what's going on.
+
+The downside:
+
+- It doesn't extend well into a multiclass problem.
+
