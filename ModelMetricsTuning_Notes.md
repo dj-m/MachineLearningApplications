@@ -30,13 +30,13 @@ It's not the same as loss function: It can be, but it doesn't have to be.
 - Loss function is used while training your model or optimizing it.
 - Evaluation metric is used on an already trained machine learning model to see the result: if it's any good.
 
-| **Supervised Learning Metrics** |
+| Supervised Learning Metrics |
 | :-: |
 | ![Supervised Learning Metrics Slide](images/supv_learning_metrics.png) |
 
-**Classification Metrics**
+### Classification Metrics ###
 
-Binary Classification
+**Binary Classification**
 
 - Accuracy = Number of correct predictions / Total number of predictions
   - Ranges from 0 to 100% (or 0 to 1)
@@ -44,4 +44,14 @@ Binary Classification
 | Accuracy in scikit-learn is accessed via score() method |
 | :-: |
 | ![Accuracy in scikit-learn](images/scikit-learn_accuracy.png) |
+
+- Even though you're getting close to 96% accuracy, it may not necessarily be a good thing.
+  - The data can be class imbalanced, with 95% of examples being positive (label) and 5% negative.
+    - Which means that if all the values are coded as positive (label) then you'd get 95% accuracy.
+
+| If we don't know what our data looks like we can't say if 96% is good number |
+| :-: |
+| ![Is accuracy of 96% good?](images/accuracy.png) |
+
+- From just the accuracy score we can't know what errors the model is doing nor how to improve it.
 
