@@ -9,7 +9,7 @@
 
 ## Machine Learning Model Evaluation Metrics ## 
 
-Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys) of ![Maria Khalusova](https://twitter.com/mariakhalusova)
+Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys) of ![Maria Khalusova](twitter.com/mariakhalusova)
 
 **Evaluation Metrics**
 
