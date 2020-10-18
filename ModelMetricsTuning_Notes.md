@@ -11,3 +11,27 @@
 
 Notes based on the AnacondaCon [video](https://www.youtube.com/watch?v=wpQiEHYkBys)
 
+**Evaluation Metrics**
+
+- Why're there so many?
+- What's the point?
+- What's the difference?
+- What do they mean?
+
+**Definition**
+
+An evaluation metric is a way to quantify the performance of a machine learning model.
+
+- It's a number that tells you if it's any good.
+  - This number can be used to compare different models.
+  
+It's not the same as loss function: It can be, but it doesn't have to be.
+
+- Loss function is used while training your model or optimizing it.
+- Evaluation metric is used on an already trained machine learning model to see the result: if it's any good.
+
+| **Supervised Learning Metrics** |
+| :-: |
+| ![Supervised Learning Metrics Slide](images/supv_learning_metrics.png) |
+
+- 
